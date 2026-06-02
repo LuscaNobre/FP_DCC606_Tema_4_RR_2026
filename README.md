@@ -105,5 +105,4 @@ Para cada cenário, registrar:
 URL: https://github.com/LuscaNobre/FP_DCC606_Tema_4_RR_2026
 
 ## 11. Equipe
-
-Preencher com os integrantes do grupo e suas responsabilidades.
+Lucas Coelho e Guilherme Matos
