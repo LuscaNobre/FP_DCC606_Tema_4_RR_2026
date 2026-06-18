@@ -9,6 +9,7 @@ Repositório do projeto final da disciplina DCC606 — tema 4: síntese de invar
 - `tests/`: especificações de casos de teste em JSON.
 - `results/`: resultados gerados pelo solver e tabela de desempenho.
 - `report/`: relatório em LaTeX no template SBC e PDF final.
+- `TrabalhoFinal_DCC606_Tema_4_RR.pdf`
 
 ## Requisitos para rodar
 
@@ -61,14 +62,3 @@ python results/regenerate_performance_csv.py
 - A métrica de taxa de falsos positivos não está automatizada no pipeline atual.
 - O projeto foi validado até 3 variáveis; a escalabilidade além disso não foi garantida.
 
-## Estrutura mínima para subir no GitHub
-
-Suba exatamente estes itens no repositório `FP_DCC606_Tema_4_RR_2026`:
-
-- `Makefile`
-- `README.md`
-- `TrabalhoFinal_DCC606_Tema_4_RR.pdf`
-- `src/`
-- `solver/`
-- `tests/`
-- `results/`
