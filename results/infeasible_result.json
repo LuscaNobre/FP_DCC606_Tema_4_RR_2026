@@ -1,0 +1,14 @@
+{
+  "status": "INVIÁVEL",
+  "error_state": "POSSIVELMENTE ALCANÇÁVEL",
+  "invariant_text": "nenhum invariante encontrado",
+  "invariant_lines": [],
+  "active_restrictions": 0,
+  "total_restrictions": 4,
+  "time_ms": 0.0,
+  "mip_gap": 0.0,
+  "nodes": 0,
+  "n_milp_vars": 1,
+  "n_constraints": 1,
+  "case_name": "infeasible"
+}

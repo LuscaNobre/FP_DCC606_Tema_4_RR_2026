@@ -1,0 +1,17 @@
+{
+  "case_name": "bms",
+  "n_vars": 2,
+  "A_init": [[1,0],[-1,0],[0,1],[0,-1]],
+  "b_init": [0,0,10,-10],
+  "A_trans": [[-1,0,1,0],[1,0,-1,0],[0,-1,0,1],[0,1,0,-1],[1,0,0,0]],
+  "b_trans": [1,-1,-1,1,10],
+  "A_error": [[1,1],[-1,-1]],
+  "b_error": [25,-25],
+  "initial_state": [0,10],
+  "update_deltas": [1,-1],
+  "guard_var_index": 0,
+  "guard_upper": 10,
+  "error_linear_form": [1,1],
+  "error_threshold": 25,
+  "force_infeasible": false
+}

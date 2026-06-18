@@ -1,0 +1,17 @@
+{
+  "status": "ÓTIMO VIÁVEL",
+  "error_state": "INALCANÇÁVEL ✓",
+  "invariant_text": "1·x - 1·y - 1·z = -15 | 1·x ≤ 6",
+  "invariant_lines": [
+    "1·x - 1·y - 1·z = -15",
+    "1·x ≤ 6"
+  ],
+  "active_restrictions": 2,
+  "total_restrictions": 4,
+  "time_ms": 11.1,
+  "mip_gap": 0.0,
+  "nodes": 0,
+  "n_milp_vars": 11,
+  "n_constraints": 1,
+  "case_name": "3vars"
+}

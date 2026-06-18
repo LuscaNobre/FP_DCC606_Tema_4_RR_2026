@@ -1,0 +1,5 @@
+case,n_milp_vars,n_constraints,time_ms,mip_gap,nodes_explored,status,selected_invariant
+bms,2,1,9.62,0.0,0,ÓTIMO VIÁVEL,1·x + 1·y = 10
+trivial,1,1,10.64,0.0,0,ÓTIMO VIÁVEL,1·x ≤ 5
+infeasible,1,1,0.0,0.0,0,INVIÁVEL,nenhum invariante encontrado
+3vars,11,1,10.71,0.0,0,ÓTIMO VIÁVEL,1·x - 1·y - 1·z = -15 | 1·x ≤ 6
