@@ -1,108 +1,91 @@
 # FP_DCC606_Tema_4_RR_2026
 
-Projeto Final da disciplina **DCC606**  
-Tema: **Síntese de Invariantes Indutivos para Verificação Formal de Programas com MILP**
+Repositório do projeto final da disciplina DCC606 — tema 4: síntese de invariantes indutivos para verificação formal via MILP.
 
-## 1. Descrição do Problema
+## O que existe neste repositório
 
-Sistemas embarcados críticos (ex.: ADAS, BMS e dispositivos médico-hospitalares) exigem alta confiabilidade.  
-Testes dinâmicos tradicionais não conseguem cobrir todos os caminhos de execução, especialmente em cenários extremos.
+- `src/`: código C++ do parser/diagnóstico e programa principal (`main.cpp`, `parser.cpp`, `diagnostics.cpp`).
+- `solver/`: solver Python em PuLP que sintetiza invariantes a partir das especificações do problema.
+- `tests/`: especificações de casos de teste em JSON.
+- `results/`: resultados gerados pelo solver e tabela de desempenho.
+- `report/`: relatório em LaTeX no template SBC e PDF final.
+- `ANALISE_COMPLEXIDADE.md`: análise detalhada de complexidade e classificação do algoritmo.
+- `RASCUNHO_RELATORIO_SBC.md`: rascunho do relatório no formato markdown.
 
-Este projeto propõe um motor de **verificação estática** para provar, matematicamente, que estados de erro (como divisão por zero, violação de limites e falhas de segurança) são inalcançáveis, usando:
+## Requisitos para rodar
 
-- Verificação formal por alcançabilidade;
-- Síntese automática de invariantes indutivos;
-- Otimização combinatória via **MILP** (Programação Linear Inteira Mista).
+- `g++` (compatível com C++17)
+- `make`
+- Python 3.9+ 
+- Biblioteca PuLP (`python -m pip install pulp`)
 
-## 2. Objetivo Geral
+## Como compilar
 
-Projetar, formular e implementar um sistema que:
-
-1. Receba a especificação de um loop de controle crítico;
-2. Traduza transições de estado em restrições lineares;
-3. Sintetize invariantes indutivos por resolvedores MILP;
-4. Encontre um conjunto mínimo/ótimo de invariantes para provar a inacessibilidade de estados de erro.
-
-## 3. Aplicação Prática
-
-Aplicações-alvo:
-
-- Controle automotivo avançado (ADAS);
-- Gerenciamento de baterias em veículos elétricos (BMS);
-- Firmware de equipamentos médico-hospitalares.
-
-Benefício: aumento da confiança em software crítico, reduzindo risco de falhas catastróficas em produção.
-
-## 4. Requisitos Acadêmicos Atendidos
-
-Este repositório foi estruturado para contemplar:
-
-- Definição detalhada do cenário e do problema;
-- Formulação e implementação do algoritmo;
-- Análise de complexidade dos algoritmos;
-- Estudo comparativo de desempenho com casos de teste representativos;
-- Relatório no padrão IEEE (mínimo 4 páginas);
-- Inclusão da URL do repositório no relatório;
-- Entrega do relatório no SIGAA e apresentação em seminário na data definida.
-
-> Observação: os programas devem ser desenvolvidos em **C ou C++**.
-
-## 5. Estrutura Esperada do Projeto
-
-```
-FP_DCC606_Tema_4_RR_2026/
-├── README.md
-├── src/                 # implementação principal (C/C++)
-├── include/             # headers (se aplicável)
-├── tests/               # casos de teste
-├── data/                # instâncias/cenários de entrada
-└── docs/                # relatório e materiais de apoio
+```bash
+make all
 ```
 
-## 6. Implementação (Visão Geral)
+## Como executar um caso específico
 
-Fluxo do motor de verificação:
+```bash
+./main --case tests/case_bms.json
+```
 
-1. Modelagem do programa (estado inicial, transições e estados de erro);
-2. Definição de templates de invariantes lineares;
-3. Formulação MILP dos coeficientes dos invariantes;
-4. Resolução com solver e extração dos invariantes;
-5. Verificação indutiva (base + passo indutivo);
-6. Emissão de relatório com resultado (seguro/inseguro) e métricas.
+## Como rodar todos os testes
 
-## 7. Análise de Complexidade
+```bash
+make test
+```
 
-A análise de complexidade deve incluir:
+## Como regenerar a tabela de desempenho
 
-- Complexidade da etapa de modelagem;
-- Complexidade da síntese via MILP (custos de Branch-and-Bound e partição);
-- Escalabilidade em função do número de variáveis, restrições e templates;
-- Impacto do tamanho das instâncias no tempo de execução.
+```bash
+python results/regenerate_performance_csv.py
+```
 
-## 8. Testes e Avaliação de Desempenho
+## Observações de implementação
 
-Os testes devem cobrir:
+### Implementado
 
-- Casos simples (validação básica);
-- Casos médios (diferentes perfis de transição);
-- Casos críticos/extremos (limites operacionais).
+- Parser em C++ que lê especificações JSON de casos de teste e exporta matrizes para o solver.
+- Solver em Python/PuLP que gera relações candidatas, valida subsets seguros e seleciona o subset ótimo via MILP de seleção.
+- Diagnóstico em C++ que formata o resultado final e exibe métricas de desempenho.
+- Caso BMS conforme o enunciado do tema: `x <= 10`, atualizações `x = x+1`, `y = y-1` e erro `x + y = 25`.
+- Caso `infeasible` ajustado para ser real inviável.
+- Correção do cálculo real de variáveis/constraints do MILP de seleção.
+- Ajuste de saída UTF-8 em `diagnostics.cpp` para exibir acentos corretamente.
+- Relatório em LaTeX pronto no template SBC e PDF gerado em `report/TrabalhoFinal_DCC606_Tema_4_RR.pdf`.
 
-Para cada cenário, registrar:
+### Limitações atuais
 
-- Tempo total de síntese;
-- Número de invariantes gerados;
-- Qualidade das provas de segurança;
-- Comparação entre configurações de template/solver.
+- O parser C++ ainda não faz análise de código fonte C/C++ real; ele consome especificações JSON com matrizes prontas.
+- O modelo ainda não implementa completamente a codificação exata das implicações universais via Big-M ou Lema de Farkas.
+- A métrica de taxa de falsos positivos não está automatizada no pipeline atual.
+- O projeto foi validado até 3 variáveis; a escalabilidade além disso não foi garantida.
 
-## 9. Relatório (Padrão IEEE)
+## Estrutura mínima para subir no GitHub
 
-- Formato: artigo IEEE (mínimo 4 páginas);  
-- Modelo: https://www.sbc.org.br/wp-content/uploads/2024/07/modelosparapublicaodeartigos.zip  
-- Deve conter a URL deste repositório.
+Suba exatamente estes itens no repositório `FP_DCC606_Tema_4_RR_2026`:
 
-## 10. Repositório
+- `Makefile`
+- `README.md`
+- `ANALISE_COMPLEXIDADE.md`
+- `RASCUNHO_RELATORIO_SBC.md`
+- `report/TrabalhoFinal_DCC606_Tema_4_RR.pdf`
+- `report/main.tex`
+- `src/`
+- `solver/`
+- `tests/`
+- `results/`
 
-URL: https://github.com/LuscaNobre/FP_DCC606_Tema_4_RR_2026
+## URL no GitHub
 
-## 11. Equipe
-Lucas Coelho e Guilherme Matos
+Use o repositório com nome:
+
+`https://github.com/<usuario>/FP_DCC606_Tema_4_RR_2026`
+
+Substitua `<usuario>` pelo nome da sua conta ou da equipe.
+
+## Observação final
+
+O relatório final deve ser enviado também no SIGAA no tópico de apresentação do projeto final.
