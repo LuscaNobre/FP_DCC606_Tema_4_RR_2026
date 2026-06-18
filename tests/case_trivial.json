@@ -1,0 +1,17 @@
+{
+  "case_name": "trivial",
+  "n_vars": 1,
+  "A_init": [[1], [-1]],
+  "b_init": [0, 0],
+  "A_trans": [[-1, 1], [1, -1], [1, 0]],
+  "b_trans": [1, -1, 4],
+  "A_error": [[1], [-1]],
+  "b_error": [10, -10],
+  "initial_state": [0],
+  "update_deltas": [1],
+  "guard_var_index": 0,
+  "guard_upper": 4,
+  "error_linear_form": [1],
+  "error_threshold": 10,
+  "force_infeasible": false
+}
