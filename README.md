@@ -9,8 +9,6 @@ Repositório do projeto final da disciplina DCC606 — tema 4: síntese de invar
 - `tests/`: especificações de casos de teste em JSON.
 - `results/`: resultados gerados pelo solver e tabela de desempenho.
 - `report/`: relatório em LaTeX no template SBC e PDF final.
-- `ANALISE_COMPLEXIDADE.md`: análise detalhada de complexidade e classificação do algoritmo.
-- `RASCUNHO_RELATORIO_SBC.md`: rascunho do relatório no formato markdown.
 
 ## Requisitos para rodar
 
@@ -69,23 +67,8 @@ Suba exatamente estes itens no repositório `FP_DCC606_Tema_4_RR_2026`:
 
 - `Makefile`
 - `README.md`
-- `ANALISE_COMPLEXIDADE.md`
-- `RASCUNHO_RELATORIO_SBC.md`
-- `report/TrabalhoFinal_DCC606_Tema_4_RR.pdf`
-- `report/main.tex`
+- `TrabalhoFinal_DCC606_Tema_4_RR.pdf`
 - `src/`
 - `solver/`
 - `tests/`
 - `results/`
-
-## URL no GitHub
-
-Use o repositório com nome:
-
-`https://github.com/<usuario>/FP_DCC606_Tema_4_RR_2026`
-
-Substitua `<usuario>` pelo nome da sua conta ou da equipe.
-
-## Observação final
-
-O relatório final deve ser enviado também no SIGAA no tópico de apresentação do projeto final.
