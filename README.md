@@ -8,7 +8,7 @@ Repositório do projeto final da disciplina DCC606 — tema 4: síntese de invar
 - `solver/`: solver Python em PuLP que sintetiza invariantes a partir das especificações do problema.
 - `tests/`: especificações de casos de teste em JSON.
 - `results/`: resultados gerados pelo solver e tabela de desempenho.
-- `report/`: relatório em LaTeX no template SBC e PDF final.
+- `report/`: relatório  no template SBC.
 - `TrabalhoFinal_DCC606_Tema_4_RR.pdf`
 
 ## Requisitos para rodar
